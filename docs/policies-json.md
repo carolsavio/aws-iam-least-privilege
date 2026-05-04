@@ -78,8 +78,7 @@ Bucket Policy (política baseada em recurso).
             "Action": ["s3:GetObject", "s3:PutObject"],
             "Resource": [
                 "arn:aws:s3:::meu-bucket-lab/data/processed/*",
-                "arn:aws:s3:::meu-bucket-lab/data/uploads/*",
-                "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+                "arn:aws:s3:::meu-bucket-lab/data/uploads/*"
             ]
         }
     ]
