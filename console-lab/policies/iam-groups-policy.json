@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowAccessViaSSMRequireMFA",
+            "Effect": "Allow",
+            "Action": "ssm:StartSession",
+            "Resource": [
+                "arn:aws:ec2:region:account-id:instance/intance-id",
+                "arn:aws:ssm:region:account-id:session/*",
+                "arn:aws:ssm:*:*:document/SSM-SessionManagerRunShell"
+            ],
+            "Condition": {
+                "BoolIfExists": {
+                    "aws:MultiFactorAuthPresent": "true"
+                }
+            }
+        },
+        {
+            "Sid": "ListInstancesInConsole",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*",
+                "ssm:DescribeInstanceInformation",
+                "ssm:GetConnectionStatus",
+                "ssm:DescribeSessions"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

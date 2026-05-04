@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyDirectAccessToEveryoneExceptEC2RoleAndAdmins",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::my-lab-bucket",
+                "arn:aws:s3:::my-labt-bucket/*"
+            ],
+            "Condition": {
+                "ArnNotLike": {
+                    "aws:PrincipalArn": [
+                        "arn:aws:iam::account-id:role/EC2-S3-Role",
+                        "arn:aws:sts::account-id:assumed-role/EC2-S3-Role/*",
+                        "arn:aws:iam::account-id:user/adm"
+                    ]
+                }
+            }
+        }
+    ]
+}
