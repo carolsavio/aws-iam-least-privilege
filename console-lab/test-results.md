@@ -28,6 +28,8 @@ $ aws s3 ls s3://meu-bucket-lab-moira350
 ```
 An error occurred (AccessDenied) when calling the ListObjectsV2 operation: Access Denied
 ```
+![img](/docs/images/list-access-denied.png)
+
 **Conclusão:** O bloqueio na raiz funcionou perfeitamente. A instância não pode vasculhar o bucket inteiro.
 
 
@@ -59,7 +61,7 @@ $ aws s3 ls s3://meu-bucket-lab-moira350/data/uploads/
 ### Teste 2.4: Upload de arquivo para a pasta autorizada
 
 ```
-$ echo "Arquivo válido" > arquivo_teste.txt
+$ echo "Meu primeiro teste de S3 na AWS" > arquivo_teste.txt
 $ aws s3 cp arquivo_teste.txt s3://meu-bucket-lab-moira350/data/uploads/arquivo_teste.txt
 ```
 **Saída:**
@@ -67,6 +69,8 @@ $ aws s3 cp arquivo_teste.txt s3://meu-bucket-lab-moira350/data/uploads/arquivo_
 ```
 upload: ./arquivo_teste.txt to s3://meu-bucket-lab-moira350/data/uploads/arquivo_teste.txt
 ```
+![allowed](/docs/images/allwed.png)
+
 **Conclusão:** A ação ***PutObject*** funcionou exclusivamente no prefixo mapeado na política.
 
 
