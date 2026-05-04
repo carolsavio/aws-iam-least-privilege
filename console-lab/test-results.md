@@ -44,6 +44,7 @@ upload failed: ./hacket.txt to s3://meu-bucket-lab-moira350/hacket.txt An error 
 ```
 **Conclusão:** A política impediu a injeção de dados fora das pastas autorizadas.
 
+---
 
 >✅ Testes Positivos (Comprovando o Acesso Permitido)
 ### Teste 2.3: Listar diretório autorizado
