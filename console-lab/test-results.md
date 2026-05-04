@@ -59,7 +59,7 @@ $ aws s3 ls s3://meu-bucket-lab-moira350/data/uploads/
 ### Teste 2.4: Upload de arquivo para a pasta autorizada
 
 ```
-$ echo "Arquivo válido" > test_file.txt
+$ echo "Arquivo válido" > arquivo_teste.txt
 $ aws s3 cp arquivo_teste.txt s3://meu-bucket-lab-moira350/data/uploads/arquivo_teste.txt
 ```
 **Saída:**
