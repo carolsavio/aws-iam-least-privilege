@@ -5,6 +5,7 @@ Para replicar este laborátorio, siga os passos a seguir:
 É preciso começar com o Bucket para ter acesso ao **ARN** dele.
 
 1 - Em Serviço S3 crie o bucket.
+
 2 - Bucket name(escolha um nome descritivo e único): meu-bucket-lab-moira350
     O bucket **deve** ter um nome único, pois buckets S3 são globais. O meu foi uma escolha pessoal para este lab.
 
