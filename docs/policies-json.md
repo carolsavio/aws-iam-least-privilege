@@ -48,9 +48,10 @@ Bucket Policy (política baseada em recurso).
       ],
       "Condition": {
         "ArnNotLike": {
-          "aws:PrincipalArn": 
+          "aws:PrincipalArn": [ 
             "arn:aws:iam::account-id:role/EC2-S3-Role",
-            "arn:aws:sts::account-id:assumed-role/EC2-S3-Role/*","arn:aws:iam::account-id:role/RoleDeAdminOuAdminUser"
+            "arn:aws:sts::account-id:assumed-role/EC2-S3-Role/*","arn:aws:iam::account-id:user/RoleDeAdminOuAdminUser"
+          ]
         }
       }
     }
