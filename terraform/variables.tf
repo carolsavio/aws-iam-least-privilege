@@ -7,12 +7,11 @@ variable "aws_region" {
 variable "bucket_name" {
   description = "Nome do bucket S3"
   type        = string
-  default     = "meu-bucket-lab"
+  default     = "meu-bucket-lab-moira5000"
 }
 
 variable "admin_arn" {
-  description = "ARN do seu usuário ADM ou role"
+  description = "ARN do usuário ADM ou role"
   type        = string
-  default = "value" # <- Arn aqui - Exemplo: "arn:aws:iam::111122223333:user/seu-usuario"
-  # 
+  default     = "value" # <- Arn aqui -> Exemplo: "arn:aws:iam::111122223333:user/seu-usuario"
 }
