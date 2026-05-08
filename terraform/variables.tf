@@ -13,5 +13,17 @@ variable "bucket_name" {
 variable "admin_arn" {
   description = "ARN do usuário ADM ou role"
   type        = string
-  default     = "value" # <- Arn aqui -> Exemplo: "arn:aws:iam::111122223333:user/seu-usuario"
+  default     = "arn:aws:iam::111122223333:user/seu-usuario" # <- Arn adm aqui
+}
+
+variable "terraform_arn" {
+  description = "ARN do Terraform"
+  type = string
+  default = "arn:aws:iam::111122223333:user/seu-usuario" # <- Arn terraform aqui
+}
+
+variable "create_custom_policy" {
+  description = "Define se deve criar a política customizada"
+  type        = bool
+  default     = false
 }

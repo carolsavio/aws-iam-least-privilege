@@ -81,7 +81,8 @@ data "aws_iam_policy_document" "bucket_policy" {
       values = [
         module.ec2_iam_role.role_arn,
         "arn:aws:sts::${data.aws_caller_identity.current.account_id}:assumed-role/${module.ec2_iam_role.role_name}/*",
-        var.admin_arn
+        var.admin_arn,
+        var.terraform_arn
       ]
     }
   }

@@ -1,4 +1,5 @@
-# AWS IAM - Acesso a Bucket S3 com Privilégio Mínimo
+# ☁️ AWS Security Architecture: Least Privilege & IaC
+Stack: AWS (S3, EC2, IAM, SSM) | IaC: Terraform | Security: Zero Trust
 
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
@@ -12,9 +13,28 @@
 ---
 
 ## 📖 Visão Geral (Overview)
-Este projeto é uma prova de conceito (PoC) prática sobre a aplicação estrita do princípio de **Privilégio Mínimo** na AWS. A arquitetura foi desenhada para resolver um problema comum de segurança: o acesso irrestrito a servidores e o vazamento de dados em buckets S3. 
+### 🏗️ Infraestrutura como Código (IaC)
+O projeto foi inicialmente concebido via Console AWS para validação de conceitos. Posteriormente, toda a infraestrutura foi refatorada e automatizada utilizando Terraform, garantindo:
 
-Ao invés de utilizar chaves SSH públicas (que podem ser vazadas) e liberar portas na internet, este laboratório utiliza o AWS Systems Manager (SSM) com exigência de MFA para acesso seguro ao terminal. Internamente, a instância EC2 é bloqueada por uma política IAM granular que a impede de acessar dados fora de seu escopo específico dentro do Amazon S3.
+Idempotência: Facilidade para replicar o ambiente em diferentes contas AWS.
+
+Segurança Auditável: Políticas de IAM escritas em HCL, facilitando a revisão de permissões.
+
+Modularização: Uso de módulos customizados para criação de IAM Roles e instâncias EC2, seguindo o princípio Don't Repeat Yourself (DRY).
+
+```
+terraform/
+├── modules/
+│   └── iam-role/           # Módulo genérico para criação de Roles e Instance Profiles
+│       ├── main.tf         # Lógica de criação da Role e Attachments
+│       ├── variables.tf    # Definição de entradas do módulo
+│       └── outputs.tf      # Exporta o ARN e o Nome da Role criada
+├── iam.tf                  # Definição das políticas de segurança (HCL)
+├── main.tf                 # Provisionamento do S3 e EC2 (conecta ao módulo)
+├── outputs.tf              # Exibe IDs e ARNs finais no terminal
+├── providers.tf            # Configuração do provedor AWS e versões
+└── variables.tf            # Variáveis globais (região, nomes, ARNs de admin)
+```
 
 ## 🎯 Principais Desafios Resolvidos
 * **Zero Trust de Rede:** Acesso ao terminal da EC2 sem abrir a porta 22 (SSH) para a internet.

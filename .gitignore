@@ -12,3 +12,4 @@ crash.log
 *.log
 *.tfplan
 .terraform.lock.hcl
+*.out

@@ -61,3 +61,11 @@ resource "aws_iam_user_group_membership" "dev_user_membership" {
   user   = aws_iam_user.dev_user.name
   groups = [aws_iam_group.dev_group.name]
 }
+
+module "ec2_iam_role" {           
+  source              = "./modules/iam-role"
+  role_name           = "EC2-S3-Role"
+  create_custom_policy = true
+  custom_policy_json  = data.aws_iam_policy_document.ec2_s3_policy.json
+  managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"]
+}
