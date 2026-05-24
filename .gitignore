@@ -11,5 +11,4 @@ override.tf.json
 crash.log
 *.log
 *.tfplan
-.terraform.lock.hcl
 *.out
